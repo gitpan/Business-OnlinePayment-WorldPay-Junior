@@ -1,5 +1,9 @@
 Revision history for Perl extension Business::OnlinePayment::WorldPay::Junior.
 
+1.01  Sun Sep 22 18:30:00 2002
+	- change within callback method to only require some transaction fields
+		if the transaction was authorised.
+
 1.00  Wed Sep 18 09:40:00 2002
 	- documentation complete - release time.
 

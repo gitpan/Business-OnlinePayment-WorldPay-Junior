@@ -23,7 +23,7 @@ our %EXPORT_TAGS = ( 'all' => [ qw( ) ] );
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw( new register authorised callback errstr valid_callback_host );
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 my %args = ();
 
@@ -255,12 +255,9 @@ sub callback
 
     my %required = ( instId => 1,
                      cartId => 1,
-                     authCurrency => 1,
-                     authAmount => 1,
                      desc => 1,
                      transId => 1,
                      transStatus => 1,
-                     transTime => 1,
                    );
     
     my %rules = ( instId => '\d+',
@@ -287,6 +284,13 @@ sub callback
                 );
                   
     my @fields = ( keys %rules );
+
+    if ( $hr_callback->{transStatus} eq 'Y' )
+        {
+        $required{authCurrency} = 1;
+        $required{authAmount} = 1;
+        $required{transTime} = 1;
+        }
     
     foreach my $field (@fields)
         {
