@@ -1,5 +1,9 @@
 Revision history for Perl extension Business::OnlinePayment::WorldPay::Junior.
 
+1.02  Mon Sep 23 07:45:00 2002
+	- made cheque for transId required only if transStatus eq 'Y'
+		thanks for Jon Morby for pointing this out
+
 1.01  Sun Sep 22 18:30:00 2002
 	- change within callback method to only require some transaction fields
 		if the transaction was authorised.
