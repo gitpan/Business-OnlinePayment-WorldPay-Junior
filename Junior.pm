@@ -23,7 +23,7 @@ our %EXPORT_TAGS = ( 'all' => [ qw( ) ] );
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw( new register authorised callback errstr valid_callback_host );
-our $VERSION = '1.03';
+our $VERSION = '1.05';
 
 my %args = ();
 
@@ -37,8 +37,7 @@ __END__
 
 =head1 NAME
 
-Business::OnlinePayment::WorldPay::Junior - Perl module to handle WorldPay Junior for payment
-services, including callback services.
+Business::OnlinePayment::WorldPay::Junior - WARNING - This module is deprecated - use Business::WorldPay::Junior instead.
 
 =head1 SYNOPSIS
 
@@ -289,7 +288,7 @@ sub callback
         $required{authCurrency} = 1;
         $required{authAmount} = 1;
         $required{transTime} = 1;
-        $required{transId} = l;
+        $required{transId} = 1;
         }
     
     foreach my $field (@fields)
@@ -310,7 +309,7 @@ sub callback
     
     # retrieve the stored details for the transaction
     my $rdb = $self->db_connect;
-    my $sql = sprintf "SELECT instId, currency, amount, description FROM worldpay WHERE cartId = %s", $rdb->quote($hr_callback->{cartId});
+    my $sql = sprintf "SELECT instId, currency, amount, description, testMode FROM worldpay WHERE cartId = %s", $rdb->quote($hr_callback->{cartId});
     my $sth = $rdb->prepare($sql);
     if ( ! $sth )
         {
@@ -341,6 +340,7 @@ sub callback
 			# stored transaction details
 			
     $fail = 1 if $hr_trans->{instId} != $hr_callback->{instId};
+    $fail = 1 if $hr_trans->{testMode} != $hr_callback->{testMode};
     $fail = 1 if $hr_trans->{description} ne $hr_callback->{desc};
 
     # If the transaction was cancelled that's all we'll have so we need

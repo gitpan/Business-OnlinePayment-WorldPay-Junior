@@ -1,5 +1,7 @@
-Business::OnlinePayment::WorldPay::Junior version 1.00
+Business::OnlinePayment::WorldPay::Junior version 1.05
 ======================================================
+
+NOTICE: This module is DEPRECATED use Business::WorldPay::Junior instead.
 
 This module provides a simple way to handle transactions sent to WorldPay
 for payment when using the WorldPay Select Junior service.

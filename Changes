@@ -1,5 +1,12 @@
 Revision history for Perl extension Business::OnlinePayment::WorldPay::Junior.
 
+1.05  Sat Mar 15 10:30:00 2003
+	- Fixed remotely exploitable security bug
+	- MODULE DEPRECATED - use Business::WorldPay::Junior instead.
+
+1.04  Tue Oct 22 11:05:00 2002
+	- typo in callback routine
+
 1.03  Mon Sep 23 10:30:00 2002
 	- fixed missing # from comment
 
