@@ -1,5 +1,8 @@
 Revision history for Perl extension Business::OnlinePayment::WorldPay::Junior.
 
+1.03  Mon Sep 23 10:30:00 2002
+	- fixed missing # from comment
+
 1.02  Mon Sep 23 07:45:00 2002
 	- made cheque for transId required only if transStatus eq 'Y'
 		thanks for Jon Morby for pointing this out

@@ -23,7 +23,7 @@ our %EXPORT_TAGS = ( 'all' => [ qw( ) ] );
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw( new register authorised callback errstr valid_callback_host );
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 
 my %args = ();
 
@@ -644,7 +644,7 @@ sub exchange_rate
 
         my $difference = $paid - $hr_trans->{amount};
 
-        If there is an underpayment $difference will be a negative value.
+        # If there is an underpayment $difference will be a negative value.
         if ( $difference >= 0 )
             {
             # Overpayment - which is OK
